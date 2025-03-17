@@ -1,0 +1,47 @@
+proxies:
+  -
+    name: 'HA香港-NF'
+    type: socks5
+    server: 127.0.0.1
+    port: 1181
+
+  -
+    name: 'HA日本'
+    type: socks5
+    server: 127.0.0.1
+    port: 1182
+
+  -
+    name: 'HA美国-Ai'
+    type: socks5
+    server: 127.0.0.1
+    port: 1183
+
+  -
+    name: 'HA新加坡-NF'
+    type: socks5
+    server: 127.0.0.1
+    port: 1184
+
+  -
+    name: 'HA韩国'
+    type: socks5
+    server: 127.0.0.1
+    port: 1185
+
+  -
+    name: 'HA东南亚'
+    type: socks5
+    server: 127.0.0.1
+    port: 1186
+    
+  -
+    name: 'HA欧洲'
+    type: socks5
+    server: 127.0.0.1
+    port: 1187
+  -
+    name: 'HA其他'
+    type: socks5
+    server: 127.0.0.1
+    port: 1188
