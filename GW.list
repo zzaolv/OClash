@@ -280,7 +280,10 @@ DOMAIN-KEYWORD,google
 DOMAIN-KEYWORD,meta.ai
 DOMAIN-KEYWORD,grok.com
 DOMAIN-SUFFIX,aistudio.google.com
-
+DOMAIN-SUFFIX,pypi.org
+DOMAIN-SUFFIX,greasyfork.org
+DOMAIN-SUFFIX,sleazyfork.org
+DOMAIN-SUFFIX,pythonhosted.org
 DOMAIN-SUFFIX,mp.microsoft.com
 DOMAIN-SUFFIX,cdn-dynmedia-1.microsoft.com
 DOMAIN-SUFFIX,checkappexec.microsoft.com
