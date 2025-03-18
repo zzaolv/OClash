@@ -272,6 +272,15 @@
 # NAME: OKX: 3
 # NAME: TruthSocial: 2
 # NAME: Zalo: 2
+#漏网
+DOMAIN-KEYWORD,claude
+DOMAIN-KEYWORD,openwrt
+DOMAIN-KEYWORD,istore
+DOMAIN-KEYWORD,google
+DOMAIN-KEYWORD,meta.ai
+DOMAIN-KEYWORD,grok.com
+DOMAIN-SUFFIX,aistudio.google.com
+
 DOMAIN-SUFFIX,mp.microsoft.com
 DOMAIN-SUFFIX,cdn-dynmedia-1.microsoft.com
 DOMAIN-SUFFIX,checkappexec.microsoft.com
