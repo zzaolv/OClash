@@ -8,6 +8,10 @@
 # NAME: Gemini: 13
 # NAME: Claude: 3
 # NAME: OpenAI: 36
+DOMAIN-SUFFIX,pypi.org
+DOMAIN-SUFFIX,greasyfork.org
+DOMAIN-SUFFIX,sleazyfork.org
+DOMAIN-SUFFIX,pythonhosted.org
 DOMAIN,edge.activity.windows.com
 DOMAIN,edge.microsoft.com
 DOMAIN,iecvlist.microsoft.com
