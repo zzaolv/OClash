@@ -5,6 +5,12 @@ DOMAIN-KEYWORD,aliyun
 DOMAIN-KEYWORD,baidu
 DOMAIN-KEYWORD,beplay
 DOMAIN-KEYWORD,maimemo
+DOMAIN-KEYWORD,gov.cn
+DOMAIN-KEYWORD,stun
+DOMAIN-SUFFIX,calendar.xiaomi.com
+DOMAIN-SUFFIX,wtzw.com
+DOMAIN-SUFFIX,mob.com
+DOMAIN-SUFFIX,bugly.qq.com
 
 # 中国国内常见域名关键词直连
 DOMAIN-KEYWORD,360buy
