@@ -1,0 +1,25 @@
+
+# 屏蔽ColorOS系统内置反诈应用进程
+PROCESS-NAME,com.oplus.appdetail
+PROCESS-NAME,com.coloros.phonemanager
+PROCESS-NAME,com.android.packageinstaller
+PROCESS-NAME,com.oplus.safecenter
+PROCESS-NAME,com.coloros.securityguard
+PROCESS-NAME,com.android.safetycenter.resources
+PROCESS-NAME,com.hicorenational.antifraud
+
+# 屏蔽特定IP地址
+# 屏蔽文件窃取相关IP
+IP-CIDR,120.76.141.58/32
+
+# 屏蔽反诈中心相关IP
+IP-CIDR,49.7.228.53/32
+IP-CIDR,14.29.101.168/32
+IP-CIDR,14.29.101.160/32
+IP-CIDR,14.29.101.169/32
+IP-CIDR,116.177.251.215/32
+IP-CIDR,218.77.192.51/32
+IP-CIDR,111.20.26.186/32
+IP-CIDR,112.84.130.73/32
+IP-CIDR,61.243.26.3/32
+IP-CIDR,116.142.251.100/32
