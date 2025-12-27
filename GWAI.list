@@ -1,13 +1,3 @@
-﻿# NAME: MicrosoftEdge: 4
-# NAME: Bing: 9
-# NAME: Copilot: 51
-# NAME: Google: 706
-# NAME: GoogleSearch: 1
-# NAME: GoogleVoice: 1
-# NAME: Chromecast: 1
-# NAME: Gemini: 13
-# NAME: Claude: 3
-# NAME: OpenAI: 36
 #漏网
 DOMAIN-KEYWORD,claude
 DOMAIN-KEYWORD,openwrt
