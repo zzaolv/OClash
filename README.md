@@ -1,6 +1,6 @@
 # OClash Rules Auto Builder
 
-这个仓库现在支持通过 **GitHub Actions + Python** 自动更新规则，保持你现有发布文件名不变（`NewRule.ini` 可继续直接使用）。
+这个仓库现在支持通过 **GitHub Actions + Python** 自动更新规则，保持现有发布文件名不变（`NewRule.ini` 可继续直接使用）。
 
 ## 目标
 
