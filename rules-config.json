@@ -1,0 +1,183 @@
+{
+  "version": 1,
+  "globals": {
+    "request_timeout": 30,
+    "request_retries": 3,
+    "request_retry_backoff_seconds": 1.5,
+    "user_agent": "OClash Rules Auto Builder/1.0"
+  },
+  "targets": {
+    "GWAI": {
+      "output_list": "GWAI.list",
+      "output_mrs": "GWAI.mrs",
+      "seed_from_current_output": true,
+      "add_file": "custom/GWAI.add.list",
+      "del_file": "custom/GWAI.del.list",
+      "list_sources": [
+        {
+          "name": "quixoticheart-ai",
+          "type": "plain_rules",
+          "url": "https://raw.githubusercontent.com/QuixoticHeart/rule-set/ruleset/meta/ai.list"
+        },
+        {
+          "name": "blackmatrix-openai",
+          "type": "clash_yaml_payload",
+          "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OpenAI/OpenAI.yaml"
+        },
+        {
+          "name": "blackmatrix-claude",
+          "type": "clash_yaml_payload",
+          "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Claude/Claude.yaml"
+        }
+      ],
+      "mrs_source": {
+        "name": "quixoticheart-ai-domain",
+        "url": "https://raw.githubusercontent.com/QuixoticHeart/rule-set/ruleset/meta/domain/ai.mrs",
+        "preserve_existing_on_failure": true
+      }
+    },
+    "GW": {
+      "output_list": "GW.list",
+      "output_mrs": "GW.mrs",
+      "seed_from_current_output": true,
+      "add_file": "custom/GW.add.list",
+      "del_file": "custom/GW.del.list",
+      "list_sources": [
+        {
+          "name": "quixoticheart-proxy",
+          "type": "plain_rules",
+          "url": "https://raw.githubusercontent.com/QuixoticHeart/rule-set/ruleset/meta/proxy.list"
+        },
+        {
+          "name": "loyalsoldier-proxy-list",
+          "type": "plain_domain_list",
+          "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/proxy-list.txt"
+        },
+        {
+          "name": "loyalsoldier-gfw",
+          "type": "plain_domain_list",
+          "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt"
+        }
+      ],
+      "mrs_source": {
+        "name": "quixoticheart-proxy-domain",
+        "url": "https://raw.githubusercontent.com/QuixoticHeart/rule-set/ruleset/meta/domain/proxy.mrs",
+        "preserve_existing_on_failure": true
+      }
+    },
+    "CN": {
+      "output_list": "CN.list",
+      "output_mrs": "CN.mrs",
+      "seed_from_current_output": true,
+      "add_file": "custom/CN.add.list",
+      "del_file": "custom/CN.del.list",
+      "list_sources": [
+        {
+          "name": "quixoticheart-cn",
+          "type": "plain_rules",
+          "url": "https://raw.githubusercontent.com/QuixoticHeart/rule-set/ruleset/meta/cn.list"
+        },
+        {
+          "name": "loyalsoldier-direct-list",
+          "type": "plain_domain_list",
+          "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/direct-list.txt"
+        },
+        {
+          "name": "loyalsoldier-china-list",
+          "type": "plain_domain_list",
+          "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/china-list.txt"
+        },
+        {
+          "name": "loyalsoldier-apple-cn",
+          "type": "plain_domain_list",
+          "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/apple-cn.txt"
+        },
+        {
+          "name": "loyalsoldier-google-cn",
+          "type": "plain_domain_list",
+          "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/google-cn.txt"
+        },
+        {
+          "name": "felixonmars-accelerated",
+          "type": "dnsmasq_conf",
+          "url": "https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/accelerated-domains.china.conf"
+        },
+        {
+          "name": "felixonmars-apple",
+          "type": "dnsmasq_conf",
+          "url": "https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/apple.china.conf"
+        },
+        {
+          "name": "felixonmars-google",
+          "type": "dnsmasq_conf",
+          "url": "https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/google.china.conf"
+        }
+      ],
+      "mrs_source": {
+        "name": "quixoticheart-cn-domain",
+        "url": "https://raw.githubusercontent.com/QuixoticHeart/rule-set/ruleset/meta/domain/cn.mrs",
+        "preserve_existing_on_failure": true
+      }
+    },
+    "others": {
+      "required": false,
+      "output_list": "others.list",
+      "output_mrs": "others.mrs",
+      "seed_from_current_output": true,
+      "add_file": "custom/others.add.list",
+      "del_file": "custom/others.del.list",
+      "list_sources": [],
+      "mrs_source": {
+        "name": "quixoticheart-others-domain",
+        "url": "https://raw.githubusercontent.com/QuixoticHeart/rule-set/ruleset/meta/domain/others.mrs",
+        "required": false,
+        "preserve_existing_on_failure": true
+      }
+    },
+    "ProxyMedia": {
+      "required": false,
+      "output_list": "ProxyMedia.list",
+      "output_mrs": "ProxyMedia.mrs",
+      "seed_from_current_output": true,
+      "list_sources": [
+        {
+          "name": "loyalsoldier-proxy-list",
+          "type": "plain_domain_list",
+          "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/proxy-list.txt"
+        }
+      ],
+      "mrs_source": {
+        "name": "quixoticheart-proxymedia-domain",
+        "url": "https://raw.githubusercontent.com/QuixoticHeart/rule-set/ruleset/meta/domain/proxymedia.mrs",
+        "required": false,
+        "preserve_existing_on_failure": true
+      }
+    },
+    "CNIP": {
+      "output_mrs": "CNIP.mrs",
+      "mrs_source": {
+        "name": "quixoticheart-cn-ipcidr",
+        "url": "https://raw.githubusercontent.com/QuixoticHeart/rule-set/ruleset/meta/ipcidr/cn.mrs",
+        "preserve_existing_on_failure": true
+      }
+    },
+    "GWIP": {
+      "output_mrs": "GWIP.mrs",
+      "mrs_source": {
+        "name": "quixoticheart-google-ipcidr",
+        "url": "https://raw.githubusercontent.com/QuixoticHeart/rule-set/ruleset/meta/ipcidr/google.mrs",
+        "preserve_existing_on_failure": true
+      }
+    },
+    "ProxyMediaIP": {
+      "required": false,
+      "output_mrs": "ProxyMediaIP.mrs",
+      "mrs_source": {
+        "name": "quixoticheart-proxymedia-ipcidr",
+        "url": "https://raw.githubusercontent.com/QuixoticHeart/rule-set/ruleset/meta/ipcidr/proxymedia.mrs",
+        "required": false,
+        "preserve_existing_on_failure": true
+      }
+    }
+  }
+}
