@@ -2,8 +2,6 @@
   "version": 1,
   "globals": {
     "request_timeout": 30,
-    "request_retries": 3,
-    "request_retry_backoff_seconds": 1.5,
     "user_agent": "OClash Rules Auto Builder/1.0"
   },
   "targets": {
