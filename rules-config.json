@@ -15,7 +15,7 @@
         {
           "name": "quixoticheart-ai",
           "type": "plain_rules",
-          "url": "https://github.com/QuixoticHeart/rule-set/raw/refs/heads/ruleset/meta/ai.list"
+          "url": "https://raw.githubusercontent.com/QuixoticHeart/rule-set/ruleset/meta/ai.list"
         },
         {
           "name": "blackmatrix-openai",
@@ -30,7 +30,8 @@
       ],
       "mrs_source": {
         "name": "quixoticheart-ai-domain",
-        "url": "https://github.com/QuixoticHeart/rule-set/raw/refs/heads/ruleset/meta/domain/ai.mrs"
+        "url": "https://raw.githubusercontent.com/QuixoticHeart/rule-set/ruleset/meta/domain/ai.mrs",
+        "preserve_existing_on_failure": true
       }
     },
     "GW": {
@@ -43,7 +44,7 @@
         {
           "name": "quixoticheart-proxy",
           "type": "plain_rules",
-          "url": "https://github.com/QuixoticHeart/rule-set/raw/refs/heads/ruleset/meta/proxy.list"
+          "url": "https://raw.githubusercontent.com/QuixoticHeart/rule-set/ruleset/meta/proxy.list"
         },
         {
           "name": "loyalsoldier-proxy-list",
@@ -58,7 +59,8 @@
       ],
       "mrs_source": {
         "name": "quixoticheart-proxy-domain",
-        "url": "https://github.com/QuixoticHeart/rule-set/raw/refs/heads/ruleset/meta/domain/proxy.mrs"
+        "url": "https://raw.githubusercontent.com/QuixoticHeart/rule-set/ruleset/meta/domain/proxy.mrs",
+        "preserve_existing_on_failure": true
       }
     },
     "CN": {
@@ -71,7 +73,7 @@
         {
           "name": "quixoticheart-cn",
           "type": "plain_rules",
-          "url": "https://github.com/QuixoticHeart/rule-set/raw/refs/heads/ruleset/meta/cn.list"
+          "url": "https://raw.githubusercontent.com/QuixoticHeart/rule-set/ruleset/meta/cn.list"
         },
         {
           "name": "loyalsoldier-direct-list",
@@ -111,10 +113,12 @@
       ],
       "mrs_source": {
         "name": "quixoticheart-cn-domain",
-        "url": "https://github.com/QuixoticHeart/rule-set/raw/refs/heads/ruleset/meta/domain/cn.mrs"
+        "url": "https://raw.githubusercontent.com/QuixoticHeart/rule-set/ruleset/meta/domain/cn.mrs",
+        "preserve_existing_on_failure": true
       }
     },
     "others": {
+      "required": false,
       "output_list": "others.list",
       "output_mrs": "others.mrs",
       "seed_from_current_output": true,
@@ -123,10 +127,13 @@
       "list_sources": [],
       "mrs_source": {
         "name": "quixoticheart-others-domain",
-        "url": "https://github.com/QuixoticHeart/rule-set/raw/refs/heads/ruleset/meta/domain/others.mrs"
+        "url": "https://raw.githubusercontent.com/QuixoticHeart/rule-set/ruleset/meta/domain/others.mrs",
+        "required": false,
+        "preserve_existing_on_failure": true
       }
     },
     "ProxyMedia": {
+      "required": false,
       "output_list": "ProxyMedia.list",
       "output_mrs": "ProxyMedia.mrs",
       "seed_from_current_output": true,
@@ -139,28 +146,35 @@
       ],
       "mrs_source": {
         "name": "quixoticheart-proxymedia-domain",
-        "url": "https://github.com/QuixoticHeart/rule-set/raw/refs/heads/ruleset/meta/domain/proxymedia.mrs"
+        "url": "https://raw.githubusercontent.com/QuixoticHeart/rule-set/ruleset/meta/domain/proxymedia.mrs",
+        "required": false,
+        "preserve_existing_on_failure": true
       }
     },
     "CNIP": {
       "output_mrs": "CNIP.mrs",
       "mrs_source": {
         "name": "quixoticheart-cn-ipcidr",
-        "url": "https://github.com/QuixoticHeart/rule-set/raw/refs/heads/ruleset/meta/ipcidr/cn.mrs"
+        "url": "https://raw.githubusercontent.com/QuixoticHeart/rule-set/ruleset/meta/ipcidr/cn.mrs",
+        "preserve_existing_on_failure": true
       }
     },
     "GWIP": {
       "output_mrs": "GWIP.mrs",
       "mrs_source": {
         "name": "quixoticheart-google-ipcidr",
-        "url": "https://github.com/QuixoticHeart/rule-set/raw/refs/heads/ruleset/meta/ipcidr/google.mrs"
+        "url": "https://raw.githubusercontent.com/QuixoticHeart/rule-set/ruleset/meta/ipcidr/google.mrs",
+        "preserve_existing_on_failure": true
       }
     },
     "ProxyMediaIP": {
+      "required": false,
       "output_mrs": "ProxyMediaIP.mrs",
       "mrs_source": {
         "name": "quixoticheart-proxymedia-ipcidr",
-        "url": "https://github.com/QuixoticHeart/rule-set/raw/refs/heads/ruleset/meta/ipcidr/proxymedia.mrs"
+        "url": "https://raw.githubusercontent.com/QuixoticHeart/rule-set/ruleset/meta/ipcidr/proxymedia.mrs",
+        "required": false,
+        "preserve_existing_on_failure": true
       }
     }
   }
