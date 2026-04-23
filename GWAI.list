@@ -219,3 +219,7 @@ DOMAIN-SUFFIX,turn.livekit.cloud
 DOMAIN,cdn.usefathom.com
 DOMAIN-SUFFIX,ai.meta.com
 DOMAIN-KEYWORD,antigravity
+DOMAIN-SUFFIX,crewai.com
+DOMAIN-SUFFIX,langchain.com
+DOMAIN-SUFFIX,lmstudio.ai
+DOMAIN-SUFFIX,ollama.com

@@ -26199,3 +26199,12 @@ DOMAIN-SUFFIX,regexp:^ewcdn[0-9]+\.nowe\.com$
 DOMAIN-SUFFIX,regexp:^github-production-release-asset-[0-9a-za-z]{6}\.s3\.amazonaws\.com$
 DOMAIN-SUFFIX,regexp:^hses[1-7]?\.akamaized\.net$
 DOMAIN-SUFFIX,regexp:^[0-9]+vod-adaptive\.akamaized\.net$
+DOMAIN-SUFFIX,asiasociety.org
+DOMAIN-SUFFIX,bellingcat.com
+DOMAIN-SUFFIX,crewai.com
+DOMAIN-SUFFIX,langchain.com
+DOMAIN-SUFFIX,lmstudio.ai
+DOMAIN-SUFFIX,ollama.com
+DOMAIN-SUFFIX,rawstory.com
+DOMAIN-SUFFIX,recordedfuture.com
+DOMAIN-SUFFIX,thinkchina.sg
