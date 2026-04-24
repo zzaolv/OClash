@@ -223,3 +223,6 @@ DOMAIN-SUFFIX,crewai.com
 DOMAIN-SUFFIX,langchain.com
 DOMAIN-SUFFIX,lmstudio.ai
 DOMAIN-SUFFIX,ollama.com
+DOMAIN-SUFFIX,agentclientprotocol.com
+DOMAIN-SUFFIX,aicode.googleapis.com
+DOMAIN-SUFFIX,plannotator.ai
