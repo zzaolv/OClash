@@ -227,3 +227,9 @@ DOMAIN-SUFFIX,agentclientprotocol.com
 DOMAIN-SUFFIX,aicode.googleapis.com
 DOMAIN-SUFFIX,plannotator.ai
 DOMAIN-SUFFIX,zed.dev
+DOMAIN,copilot-telemetry-service.githubusercontent.com
+DOMAIN,copilot-telemetry.githubusercontent.com
+DOMAIN,copilot-workspace.githubnext.com
+DOMAIN,copilotprodattachments.blob.core.windows.net
+DOMAIN-SUFFIX,anythingllm.com
+DOMAIN-SUFFIX,openspec.dev
