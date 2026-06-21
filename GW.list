@@ -31134,3 +31134,6 @@ DOMAIN-SUFFIX,quote.longbridge.global
 DOMAIN-SUFFIX,support.futunn.com
 DOMAIN-SUFFIX,trade.futunn.com
 DOMAIN-SUFFIX,trade.longportapp.com
+DOMAIN,gog-cdn-lumen.secure2.footprint.net
+DOMAIN-SUFFIX,full:gog-cdn-lumen.secure2.footprint.net
+DOMAIN-SUFFIX,full:gog-cdn.akamaized.net
