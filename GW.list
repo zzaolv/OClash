@@ -132,7 +132,6 @@ DOMAIN,community.oneplus.com
 DOMAIN,crl.versign.net
 DOMAIN,databank.worldbank.org
 DOMAIN,datarouter.apps.netherrealm.com
-DOMAIN,default.exp-tas.com
 DOMAIN,deutschewelle.h-cdn.com
 DOMAIN,dl.begellhouse.com
 DOMAIN,elib.maruzen.co.jp
@@ -31140,3 +31139,14 @@ DOMAIN-SUFFIX,full:gog-cdn.akamaized.net
 DOMAIN-SUFFIX,gog-services.com
 DOMAIN-SUFFIX,gogalaxy.com
 DOMAIN-SUFFIX,full:www.microsoft.com
+DOMAIN-SUFFIX,almalinux.org
+DOMAIN-SUFFIX,busybox.net
+DOMAIN-SUFFIX,exp-tas.com
+DOMAIN-SUFFIX,github.career
+DOMAIN-SUFFIX,lifeatspotify.com
+DOMAIN-SUFFIX,manjaro.org
+DOMAIN-SUFFIX,rockylinux.org
+DOMAIN-SUFFIX,spotifyforvendors.com
+DOMAIN-SUFFIX,vscode-webview.net
+DOMAIN-SUFFIX,vscodeedu.app
+DOMAIN-SUFFIX,vscodeedu.com
