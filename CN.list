@@ -121504,3 +121504,7 @@ DOMAIN-SUFFIX,sf.global
 DOMAIN-SUFFIX,tcp-crm.com
 DOMAIN-SUFFIX,ip3a.com
 DOMAIN-SUFFIX,pg245348.cc
+DOMAIN-SUFFIX,full:account-cn.alibabacloud.com
+DOMAIN-SUFFIX,full:api.alibabacloud.com
+DOMAIN-SUFFIX,full:cn.alibabacloud.com
+DOMAIN-SUFFIX,full:status.alibabacloud.com
