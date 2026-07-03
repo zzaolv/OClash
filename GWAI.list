@@ -243,3 +243,6 @@ DOMAIN-SUFFIX,oaistatsig.com
 DOMAIN-SUFFIX,qoder.com
 DOMAIN-SUFFIX,sider.ai
 DOMAIN-SUFFIX,tripo3d.ai
+DOMAIN,openai.qualtrics.com
+DOMAIN,openaiassets.blob.core.windows.net
+DOMAIN-SUFFIX,copilot.com
