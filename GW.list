@@ -144,7 +144,6 @@ DOMAIN,hpstore.corpmerchandise.com
 DOMAIN,hub.slarker.me
 DOMAIN,i.jeded.com
 DOMAIN,imperial.insendi.com
-DOMAIN,ingest.apple-studies.com
 DOMAIN,lf16-effectcdn.byteeffecttos-g.com
 DOMAIN,lf16-pkgcdn.pitaya-clientai.com
 DOMAIN,licdn.cn.cdn20.com
@@ -31188,3 +31187,7 @@ DOMAIN-SUFFIX,full:afa7f374f51cc8991.awsglobalaccelerator.com
 DOMAIN-SUFFIX,copilot.com
 DOMAIN-SUFFIX,webshare.io
 DOMAIN-SUFFIX,full:openaiassets.blob.core.windows.net
+DOMAIN-SUFFIX,apple-studies.com
+DOMAIN-SUFFIX,atmeta.com
+DOMAIN-SUFFIX,azure-api.net
+DOMAIN-SUFFIX,azurestaticapps.net
