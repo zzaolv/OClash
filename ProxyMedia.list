@@ -27381,3 +27381,7 @@ DOMAIN-SUFFIX,megaad.nz
 DOMAIN-SUFFIX,megapay.nz
 DOMAIN-SUFFIX,megas4.com
 DOMAIN-SUFFIX,transfer.it
+DOMAIN-SUFFIX,full:copilot-telemetry-service.githubusercontent.com
+DOMAIN-SUFFIX,full:copilot-telemetry.githubusercontent.com
+DOMAIN-SUFFIX,full:incoming-telemetry.thunderbird.net
+DOMAIN-SUFFIX,full:incoming.telemetry.mozilla.org
