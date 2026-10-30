@@ -9,34 +9,11 @@ DOMAIN-KEYWORD,openaicom-api
 DOMAIN-KEYWORD,gstatic.com
 DOMAIN-KEYWORD,x.ai
 DOMAIN-KEYWORD,googleapis.com
-# Muse AI (Meta) - Loon 分流规则集
-# 基于 Meta Muse 客户端二进制逆向分析提取的后端域名整理
-# 来源: github.com/mahdi-salmanzade/meta-muse-teardown
-# 更新: 2026-09-29
-#
-# 已交叉核实:
-# - VPSDance/ai-proxy-rules meta-ai.list: 覆盖 meta.ai 后缀 + Llama 相关域名,缺 Muse 专用域名
-# - blackmatrix7/ios_rule_script Facebook 规则集: 覆盖 meta.com/facebook.com/fbcdn.net/fbsbx.com/
-#   whatsapp.com+net/instagram.com 等 Meta 账号与社交基础设施,同样缺 Muse 专用域名
-# - NodeSeek 社区实测 (2026-09-26): 用户日志确认 ep7.facebook.com、auth.meta.com、
-#   metaaivm.com 等均需走代理,与本列表一致 (已被 facebook.com / meta.com 后缀覆盖)
-# - Linux.do (2026-09-19): 用户实测长期仅用 muse.ai / meta.com / metaaivm.com 三条即可,
-#   其余 Meta 生态域名为账号/登录/内容依赖 (linux.do/t/topic/2923762)
-# - V2EX (2026-09-26, v2ex.com/t/1244891): 独立确认同上六条规则,同样卡在地区限制,
-#   印证地区判定看出口 IP 而非域名覆盖
-#
-# 重要: Muse 有地区限制。域名全走代理仍可能提示"尚未在你的国家或地区开放",
-# 此时是出口 IP 问题 —— 需要美区原生/家宽 IP (机房 IP、广播 IP 会被排队)。
-# 搭配上游 VPSDance/ai-proxy-rules 的 meta-ai.list 一起使用 (该库已包含 DOMAIN-SUFFIX,meta.ai 等 Meta AI/Llama 通用规则)
-
-# === 核心: Muse 应用域名 ===
 DOMAIN-SUFFIX,muse.ai
 DOMAIN-SUFFIX,museai.com
 DOMAIN-SUFFIX,meta.ai
 DOMAIN-SUFFIX,meta.com
 DOMAIN-SUFFIX,atmeta.com
-
-# === 云端虚拟机 (Secure VM) 基础设施 ===
 DOMAIN-SUFFIX,metaaivm.com
 DOMAIN-SUFFIX,metaaiusercontent.com
 DOMAIN-SUFFIX,ecto1usercontent.com
@@ -46,12 +23,8 @@ DOMAIN,meta.privacy-gateway.cloudflare.com
 DOMAIN,meta.hpke-keys.privacy-gateway.cloudflare.com
 DOMAIN,meta-ohttp-relay-prod.fastly-edge.com
 DOMAIN,meta-ohttp-config-prod.fastly-edge.com
-
-# === WhatsApp 集成 (Muse 可运行在 WhatsApp 内) ===
 DOMAIN-SUFFIX,whatsapp.com
 DOMAIN-SUFFIX,whatsapp.net
-
-# === Meta 账号体系 / Facebook / Instagram 集成 ===
 DOMAIN-SUFFIX,facebook.com
 DOMAIN-SUFFIX,facebook.net
 DOMAIN-SUFFIX,fbcdn.net
@@ -104,7 +77,6 @@ DOMAIN,cp4.cloudflare.com
 DOMAIN,daily-cloudcode-pa.googleapis.com
 DOMAIN,gspe1-ssl.ls.apple.com
 DOMAIN,guzzoni.apple.com
-DOMAIN,imagine.meta.com
 DOMAIN,notebooklm-pa.googleapis.com
 DOMAIN,notebooklm.googleapis.com
 DOMAIN,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
@@ -213,7 +185,6 @@ DOMAIN-SUFFIX,makersuite.google.com
 DOMAIN-SUFFIX,manus.im
 DOMAIN-SUFFIX,manuscdn.com
 DOMAIN-SUFFIX,marscode.com
-DOMAIN-SUFFIX,meta.ai
 DOMAIN-SUFFIX,minimax.io
 DOMAIN-SUFFIX,mistral.ai
 DOMAIN-SUFFIX,notebooklm.google
@@ -318,8 +289,6 @@ DOMAIN-SUFFIX,notebook.google
 DOMAIN,geminiweb-pa.clients.google.com
 DOMAIN,geminiweb-pa.clients6.google.com
 DOMAIN-SUFFIX,labstailwind.pa.googleapis.com
-DOMAIN-SUFFIX,metaaivm.com
-DOMAIN-SUFFIX,muse.ai
 DOMAIN-SUFFIX,opencode.ai
 DOMAIN-SUFFIX,claude.dev
 DOMAIN-SUFFIX,syntx.ai
@@ -344,5 +313,4 @@ DOMAIN-SUFFIX,artificialanalysis.ai
 DOMAIN-SUFFIX,cline.bot
 DOMAIN-SUFFIX,commandcode.ai
 DOMAIN-SUFFIX,context7.com
-DOMAIN-SUFFIX,metaaiusercontent.com
 DOMAIN-SUFFIX,nousresearch.com
