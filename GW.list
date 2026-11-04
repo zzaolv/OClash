@@ -31838,3 +31838,7 @@ DOMAIN-SUFFIX,webflow-ext.com
 DOMAIN-SUFFIX,webflow.io
 DOMAIN-SUFFIX,website-files.com
 DOMAIN-SUFFIX,ziggo.nl
+DOMAIN-SUFFIX,beget.email
+DOMAIN-SUFFIX,bilibili.tv
+DOMAIN-SUFFIX,regexp:(^|\.)91cg([1-9]|[0-9][1-9])?\.com$
+DOMAIN-SUFFIX,regexp:(^|\.)javdb\d+\.com$
