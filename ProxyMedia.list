@@ -27686,3 +27686,8 @@ DOMAIN-SUFFIX,beget.email
 DOMAIN-SUFFIX,bilibili.tv
 DOMAIN-SUFFIX,regexp:(^|\.)91cg([1-9]|[0-9][1-9])?\.com$
 DOMAIN-SUFFIX,regexp:(^|\.)javdb\d+\.com$
+DOMAIN-SUFFIX,limbuscompany.global
+DOMAIN-SUFFIX,limbuscompanyapi.com
+DOMAIN-SUFFIX,limbuscompanycdn.org
+DOMAIN-SUFFIX,projectmoon.studio
+DOMAIN-SUFFIX,skinswap.com
