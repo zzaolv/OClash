@@ -1,0 +1,76 @@
+{
+  "name": "OClash AdGuard Home 合并规则",
+  "description": "每天合并 AdGuard Home 在用的订阅规则，去重、去掉被父域名覆盖的子域名规则、去掉 AdGuard Home 用不上的规则后输出。白名单订阅已转成 @@ 放行规则合并在内。",
+  "homepage": "https://github.com/zzaolv/OClash",
+  "license": "各条规则沿用其上游列表的许可",
+  "sources": [
+    {
+      "name": "AdGuard DNS filter",
+      "source": "https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt",
+      "type": "adblock",
+      "transformations": ["RemoveComments", "Compress", "ValidateAllowIp"]
+    },
+    {
+      "name": "8680 GOODBYEADS dns (wx2)",
+      "source": "https://raw.githubusercontent.com/8680/GOODBYEADS/master/data/rules/dns.txt",
+      "type": "adblock",
+      "transformations": ["RemoveComments", "Compress", "ValidateAllowIp"]
+    },
+    {
+      "name": "EasyPrivacy (EP)",
+      "source": "https://easylist-downloads.adblockplus.org/easyprivacy.txt",
+      "type": "adblock",
+      "transformations": ["RemoveComments", "Compress", "ValidateAllowIp"]
+    },
+    {
+      "name": "EasyList China (EC)",
+      "source": "https://easylist-downloads.adblockplus.org/easylistchina.txt",
+      "type": "adblock",
+      "transformations": ["RemoveComments", "Compress", "ValidateAllowIp"]
+    },
+    {
+      "name": "CHN: anti-AD",
+      "source": "https://adguardteam.github.io/HostlistsRegistry/assets/filter_21.txt",
+      "type": "adblock",
+      "transformations": ["RemoveComments", "Compress", "ValidateAllowIp"]
+    },
+    {
+      "name": "8680 GOODBYEADS adblock",
+      "source": "https://raw.githubusercontent.com/8680/GOODBYEADS/master/data/rules/adblock.txt",
+      "type": "adblock",
+      "transformations": ["RemoveComments", "Compress", "ValidateAllowIp"]
+    },
+    {
+      "name": "217heidai adblockdns (git)",
+      "source": "https://raw.githubusercontent.com/217heidai/adblockfilters/main/rules/adblockdns.txt",
+      "type": "adblock",
+      "transformations": ["RemoveComments", "Compress", "ValidateAllowIp"]
+    },
+    {
+      "name": "HaGeZi's Normal Blocklist",
+      "source": "https://adguardteam.github.io/HostlistsRegistry/assets/filter_34.txt",
+      "type": "adblock",
+      "transformations": ["RemoveComments", "Compress", "ValidateAllowIp"]
+    },
+    {
+      "name": "AWAvenue Ads Rule (秋风)",
+      "source": "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/AWAvenue-Ads-Rule.txt",
+      "type": "adblock",
+      "transformations": ["RemoveComments", "Compress", "ValidateAllowIp"]
+    },
+    {
+      "name": "8680 GOODBYEADS allow (原白名单订阅)",
+      "source": "https://raw.githubusercontent.com/8680/GOODBYEADS/master/data/rules/allow.txt",
+      "type": "adblock",
+      "transformations": ["RemoveComments", "Compress", "InvertAllow", "ValidateAllowIp"]
+    },
+    {
+      "name": "自定义添加 (custom/adguard.add.txt)",
+      "source": "custom/adguard.add.txt",
+      "type": "adblock",
+      "transformations": ["RemoveComments", "ValidateAllowIp"]
+    }
+  ],
+  "transformations": ["Compress", "ValidateAllowIp", "Deduplicate", "RemoveEmptyLines", "InsertFinalNewLine"],
+  "exclusions_sources": ["custom/adguard.del.txt"]
+}

@@ -1,0 +1,104 @@
+name: Update AdGuard Home Rules
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 北京时间每天 03:30
+    - cron: "30 19 * * *"
+  push:
+    branches: [main]
+    paths:
+      - "adguard/**"
+      - "custom/adguard.add.txt"
+      - "custom/adguard.del.txt"
+      - ".github/workflows/update-adguard.yml"
+  # 改动规则配置的 PR 只编译检查, 不发布
+  pull_request:
+    paths:
+      - "adguard/**"
+      - "custom/adguard.add.txt"
+      - "custom/adguard.del.txt"
+      - ".github/workflows/update-adguard.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  # PR 的检查和 main 上的发布分开排队, 互不阻塞
+  group: update-adguard-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  # 合并结果单独放在这个分支上，每次覆盖成一个提交，不在 main 上累积历史
+  PUBLISH_BRANCH: adguard
+  OUTPUT_FILE: adguard.txt
+  # 规则数低于这个值就认为上游出了问题，不发布，AdGuard Home 继续用上一版
+  # (2026-11 合并结果约 35 万条)
+  MIN_RULES: "150000"
+  HOSTLIST_COMPILER_VERSION: "2.1.1"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          # hostlist-compiler 2.x 需要 Node.js 22.22.2 以上, 不支持 23
+          node-version: "22"
+
+      - name: Compile rules
+        run: |
+          mkdir -p dist
+          npx --yes "@adguard/hostlist-compiler@${HOSTLIST_COMPILER_VERSION}" \
+            -c adguard/hostlist-compiler.json \
+            -o "dist/${OUTPUT_FILE}"
+
+      - name: Check result
+        run: |
+          f="dist/${OUTPUT_FILE}"
+          rules=$(grep -cvE '^[[:space:]]*(!|#|$)' "$f" || true)
+          allow=$(grep -c '^@@' "$f" || true)
+          regex=$(grep -cE '^(@@)?/' "$f" || true)
+          size=$(du -h "$f" | cut -f1)
+          {
+            echo "### AdGuard Home 合并规则"
+            echo
+            echo "| 项目 | 数值 |"
+            echo "|---|---|"
+            echo "| 规则总数 | ${rules} |"
+            echo "| 其中放行规则 | ${allow} |"
+            echo "| 其中正则规则 | ${regex} |"
+            echo "| 文件大小 | ${size} |"
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "rules=${rules} allow=${allow} regex=${regex} size=${size}"
+          if [ "${rules}" -lt "${MIN_RULES}" ]; then
+            echo "::error::规则只有 ${rules} 条，低于下限 ${MIN_RULES}，可能有上游出错，本次不发布"
+            exit 1
+          fi
+
+      - name: Upload result
+        uses: actions/upload-artifact@v4
+        with:
+          name: adguard-rules
+          path: dist/${{ env.OUTPUT_FILE }}
+          retention-days: 7
+
+      - name: Publish
+        if: github.event_name != 'pull_request'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd dist
+          git init -q -b "${PUBLISH_BRANCH}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "${OUTPUT_FILE}"
+          git commit -q -m "chore: update AdGuard Home rules ($(date -u +'%Y-%m-%d %H:%M UTC'))"
+          git push -q -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:${PUBLISH_BRANCH}"
+          echo "订阅地址: https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${PUBLISH_BRANCH}/${OUTPUT_FILE}" >> "$GITHUB_STEP_SUMMARY"
