@@ -314,3 +314,6 @@ DOMAIN-SUFFIX,cline.bot
 DOMAIN-SUFFIX,commandcode.ai
 DOMAIN-SUFFIX,context7.com
 DOMAIN-SUFFIX,nousresearch.com
+DOMAIN,http-intake.logs.us5.datadoghq.com
+DOMAIN,production-copilot-host-westus.webpubsub.azure.com
+DOMAIN-SUFFIX,grokbot.com
