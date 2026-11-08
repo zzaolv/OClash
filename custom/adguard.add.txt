@@ -1,0 +1,4 @@
+! 追加到 AdGuard Home 合并规则里的自定义规则，每行一条，AdGuard 语法
+! 拦截: ||example.com^
+! 放行: @@||example.com^
+! 以 ! 开头的是注释

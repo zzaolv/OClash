@@ -67,3 +67,33 @@ python scripts/build_rules.py
 - `.list` 为文本规则输出（classical）
 - `.mrs` 当前采用上游成熟产物直连下载，减少二进制编译链不稳定因素
 - 如后续需要本仓库自行编译 `.mrs`，可在 `build_rules.py` 基础上扩展 mihomo 转换步骤
+
+## AdGuard Home 合并规则
+
+把 AdGuard Home 里订阅的多个过滤列表合并成一个文件，每天自动更新。
+
+- 订阅地址：`https://raw.githubusercontent.com/zzaolv/OClash/adguard/adguard.txt`
+- 工作流：`.github/workflows/update-adguard.yml`（北京时间每天 03:30，也可手动触发）
+- 配置文件：`adguard/hostlist-compiler.json`，上游列表都写在这里
+- 合并工具：AdGuard 官方的 [HostlistCompiler](https://github.com/AdguardTeam/HostlistCompiler)
+
+处理步骤：
+
+1. 下载各上游列表，hosts 格式和纯域名统一转成 `||域名^`
+2. 白名单订阅（8680 allow）转成 `@@` 放行规则一起合并
+3. 去掉 AdGuard Home 用不上的规则：浏览器元素隐藏规则、只对某些网站生效的规则、不支持的修饰符、整个顶级域名的拦截
+4. 去重，并去掉已被父域名规则覆盖的子域名规则（有 `||example.com^` 就不再需要 `||ads.example.com^`）
+5. 应用 `custom/adguard.del.txt` 里的剔除规则，追加 `custom/adguard.add.txt` 里的自定义规则
+
+保护措施：
+
+- 任何一个上游下载失败，或者结果少于 15 万条，本次都不发布，AdGuard Home 继续用上一版
+- 结果发布在单独的 `adguard` 分支，每次覆盖成一个提交，不会让 main 的历史越来越大
+- 改动规则配置的 PR 只编译检查、不发布，编译结果可以在该次运行的 Artifacts 里下载
+
+自定义：
+
+- `custom/adguard.add.txt`：追加规则，AdGuard 语法，例如 `||example.com^`、`@@||example.com^`
+- `custom/adguard.del.txt`：剔除规则，写规则原文，或通配符、`/正则/`；默认剔除了会拦掉所有反向解析的 `||in-addr.arpa^` 和 `||ip6.arpa^`
+
+AdGuard Home 里自己写的「自定义过滤规则」不受影响，继续在 AdGuard Home 里维护。
