@@ -71,6 +71,6 @@
       "transformations": ["RemoveComments", "ValidateAllowIp"]
     }
   ],
-  "transformations": ["Compress", "ValidateAllowIp", "Deduplicate", "RemoveEmptyLines", "InsertFinalNewLine"],
+  "transformations": ["Compress", "Deduplicate", "RemoveEmptyLines", "InsertFinalNewLine"],
   "exclusions_sources": ["custom/adguard.del.txt"]
 }
