@@ -97,3 +97,28 @@ python scripts/build_rules.py
 - `custom/adguard.del.txt`：剔除规则，写规则原文，或通配符、`/正则/`；默认剔除了会拦掉所有反向解析的 `||in-addr.arpa^` 和 `||ip6.arpa^`
 
 AdGuard Home 里自己写的「自定义过滤规则」不受影响，继续在 AdGuard Home 里维护。
+
+## AdStop 去广告重写/脚本合并规则
+
+把多个上游的 Surge `.sgmodule`、Loon `.plugin`、Quantumult X `.conf` 去广告重写与脚本规则合并、规范化、去重为一个可直接被 `luci-app-adstop` 订阅的 `.sgmodule` 模块，并自动将引用的外部 `.js` 脚本镜像到同分支下，每天自动更新。
+
+- 订阅地址：`https://raw.githubusercontent.com/zzaolv/OClash/adstop/adstop.sgmodule`
+- 镜像脚本目录：`https://raw.githubusercontent.com/zzaolv/OClash/adstop/scripts/`
+- 工作流：`.github/workflows/update-adstop.yml`（北京时间每天 03:45，也可手动触发）
+- 配置文件：`adstop/sources.json`
+- 构建脚本：`scripts/build_adstop.py`
+
+处理步骤：
+
+1. 拉取各上游去广告模块（`fmz200/wool_scripts` 全集/微博/微信小游戏/X网页/拦截HTTPDNS、`ddgksf2013/Rewrite` 高德/值得买/贴吧/小宇宙/喜马拉雅/Keep/菜鸟/闲鱼/彩云天气/网易云音乐/墨迹天气/车来了等）
+2. 将 Surge、Loon、Quantumult X 三种格式统一转换为 AdStop 原生支持的 Surge `.sgmodule` 标准段落（`[Rule]`、`[URL Rewrite]`、`[Header Rewrite]`、`[Body Rewrite]`、`[Map Local]`、`[Script]`、`[MITM]`）
+3. 过滤 AdStop Rust `regex` 引擎不支持的 PCRE 零宽断言/反向引用以及 `http-response-jq` / `jsonjq-response-body` 等不兼容语法，确保 AdStop 加载时 **0 跳过、0 报错**
+4. 按段落深度去重（子域名裁剪、同正则 URL Rewrite 保留更精确的动作、同脚本规则合并、MITM 域名去重并保留 `-` 排除项）
+5. 并发下载所有 `[Script]` 引用的外部 `.js` 脚本并镜像到 `adstop` 分支的 `scripts/` 目录，自动重写 `script-path=` 地址并剔除已失效（404）的死链脚本
+6. 应用 `custom/adstop.add.sgmodule` 与 `custom/adstop.del.txt`
+
+自定义：
+
+- `custom/adstop.add.sgmodule`：追加自定义规则，支持完整 `.sgmodule` 语法
+- `custom/adstop.del.txt`：剔除规则或 MITM 域名，支持普通子串或 `/正则/`
+

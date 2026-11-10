@@ -1,0 +1,144 @@
+name: Update AdStop Rules
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 北京时间每天 03:45
+    - cron: "45 19 * * *"
+  push:
+    branches: [main]
+    paths:
+      - "adstop/**"
+      - "custom/adstop.add.sgmodule"
+      - "custom/adstop.del.txt"
+      - "scripts/build_adstop.py"
+      - ".github/workflows/update-adstop.yml"
+  # 改动规则配置的 PR 只编译检查, 不发布
+  pull_request:
+    paths:
+      - "adstop/**"
+      - "custom/adstop.add.sgmodule"
+      - "custom/adstop.del.txt"
+      - "scripts/build_adstop.py"
+      - ".github/workflows/update-adstop.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  # PR 的检查和 main 上的发布分开排队, 互不阻塞
+  group: update-adstop-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  # 合并结果与镜像脚本单独放在这个分支上，每次覆盖成一个提交，不在 main 上累积历史
+  PUBLISH_BRANCH: adstop
+  OUTPUT_FILE: adstop.sgmodule
+  # 规则数低于下限则认为上游异常，不发布，AdStop 继续用上一版
+  MIN_REWRITE_RULES: "1000"
+  MIN_MITM_HOSTS: "500"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch existing mirrored scripts cache
+        run: |
+          mkdir -p /tmp/seed-scripts
+          if git ls-remote --exit-code --heads origin "${PUBLISH_BRANCH}" >/dev/null 2>&1; then
+            git fetch -q origin "${PUBLISH_BRANCH}" --depth=1
+            git archive FETCH_HEAD scripts 2>/dev/null | tar -x -C /tmp/seed-scripts --strip-components=1 || true
+          fi
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile rules and mirror scripts
+        run: |
+          python scripts/build_adstop.py \
+            --config adstop/sources.json \
+            --output-dir dist/adstop \
+            --seed-scripts-dir /tmp/seed-scripts
+
+      - name: Check result
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, sys
+
+          out_dir = pathlib.Path("dist/adstop")
+          sg_file = out_dir / os.environ["OUTPUT_FILE"]
+          stats = json.loads((out_dir / "stats.json").read_text(encoding="utf-8"))
+
+          rewrites_total = (
+              stats["url_rewrites"]
+              + stats["header_rewrites"]
+              + stats["body_rewrites"]
+              + stats["map_locals"]
+              + stats["scripts"]
+          )
+          size_kb = f"{sg_file.stat().st_size / 1024:.1f} KB"
+
+          summary_lines = [
+              "### AdStop 去广告合并模块 (`.sgmodule`)",
+              "",
+              "| 项目 | 数值 |",
+              "|---|---|",
+              f"| 成功拉取上游源 | {stats['sources_ok']} |",
+              f"| 重写与脚本规则总数 | {rewrites_total} |",
+              f"| - `[URL Rewrite]` | {stats['url_rewrites']} |",
+              f"| - `[Header Rewrite]` | {stats['header_rewrites']} |",
+              f"| - `[Body Rewrite]` | {stats['body_rewrites']} |",
+              f"| - `[Map Local]` | {stats['map_locals']} |",
+              f"| - `[Script]` | {stats['scripts']} |",
+              f"| `[Rule]` 域名规则 (`REJECT`) | {stats['domain_rules']} |",
+              f"| `[MITM]` 域名总数 | {stats['mitm_hosts']} |",
+              f"| 镜像 JS 脚本文件数 | {stats['mirrored_scripts']} |",
+              f"| 模块文件大小 | {size_kb} |",
+              "",
+          ]
+
+          summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
+          if summary_path:
+              with open(summary_path, "a", encoding="utf-8") as fh:
+                  fh.write("\n".join(summary_lines) + "\n")
+
+          min_rewrites = int(os.environ["MIN_REWRITE_RULES"])
+          min_mitm = int(os.environ["MIN_MITM_HOSTS"])
+          if rewrites_total < min_rewrites:
+              print(f"::error::重写规则只有 {rewrites_total} 条，低于下限 {min_rewrites}，本次不发布", file=sys.stderr)
+              sys.exit(1)
+          if stats["mitm_hosts"] < min_mitm:
+              print(f"::error::MITM 域名只有 {stats['mitm_hosts']} 个，低于下限 {min_mitm}，本次不发布", file=sys.stderr)
+              sys.exit(1)
+          PY
+
+      - name: Upload result
+        uses: actions/upload-artifact@v4
+        with:
+          name: adstop-rules
+          path: |
+            dist/adstop/${{ env.OUTPUT_FILE }}
+            dist/adstop/scripts/
+            dist/adstop/stats.json
+          retention-days: 7
+
+      - name: Publish
+        if: github.event_name != 'pull_request'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd dist/adstop
+          git init -q -b "${PUBLISH_BRANCH}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "${OUTPUT_FILE}" scripts
+          git commit -q -m "chore: update AdStop rules ($(date -u +'%Y-%m-%d %H:%M UTC'))"
+          git push -q -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:${PUBLISH_BRANCH}"
+          echo "订阅地址: https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${PUBLISH_BRANCH}/${OUTPUT_FILE}" >> "$GITHUB_STEP_SUMMARY"

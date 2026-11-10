@@ -1,0 +1,32 @@
+#!name=OClash AdStop Custom Additions
+#!desc=追加到 AdStop 合并规则里的自定义规则，使用标准 Surge .sgmodule 语法
+
+[Rule]
+# 域名拦截规则示例 (同时会自动导出到 AdStop 的 /agh/rules.txt 供 AdGuard Home 使用):
+# DOMAIN,ad.example.com,REJECT
+# DOMAIN-SUFFIX,ads.example.com,REJECT
+# DOMAIN-KEYWORD,adservice,REJECT
+
+[URL Rewrite]
+# URL 重写拦截示例:
+# ^https?:\/\/example\.com\/api\/v1\/ads - reject-dict
+
+[Header Rewrite]
+# Header 修改示例:
+# ^https?:\/\/example\.com\/api request-header-del X-Ad-Token
+
+[Body Rewrite]
+# Body 正则替换示例:
+# http-response ^https?:\/\/example\.com\/feed "is_ad":true "is_ad":false
+
+[Map Local]
+# 本地伪造响应示例:
+# ^https?:\/\/example\.com\/splash data-type=json data="{}" status-code=200
+
+[Script]
+# 脚本规则示例:
+# example_ad = type=http-response, pattern=^https?:\/\/example\.com\/timeline, script-path=https://example.com/ad.js, requires-body=1
+
+[MITM]
+# 需要 MITM 解密的域名，排除域名使用 - 前缀 (如 -pay.example.com):
+# hostname = %APPEND% api.example.com, -pay.example.com

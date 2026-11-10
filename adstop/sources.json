@@ -1,0 +1,115 @@
+{
+  "globals": {
+    "request_timeout": 30,
+    "request_retries": 3,
+    "request_retry_backoff_seconds": 1.5,
+    "user_agent": "OClash AdStop Rules Auto Builder/1.0",
+    "script_mirror_base_url": "https://raw.githubusercontent.com/zzaolv/OClash/adstop/scripts",
+    "add_file": "custom/adstop.add.sgmodule",
+    "del_file": "custom/adstop.del.txt"
+  },
+  "sources": [
+    {
+      "name": "fmz200 blockAds (墨鱼去广告全集)",
+      "url": "https://raw.githubusercontent.com/fmz200/wool_scripts/main/Surge/module/blockAds.module",
+      "type": "sgmodule",
+      "required": true
+    },
+    {
+      "name": "fmz200 weibo (微博深度去广告)",
+      "url": "https://raw.githubusercontent.com/fmz200/wool_scripts/main/Surge/module/weibo.module",
+      "type": "sgmodule",
+      "required": true
+    },
+    {
+      "name": "fmz200 XWebAds (X/Twitter 网页去广告)",
+      "url": "https://raw.githubusercontent.com/fmz200/wool_scripts/main/Surge/module/XWebAds.module",
+      "type": "sgmodule",
+      "required": false
+    },
+    {
+      "name": "fmz200 WeChatMiniAds (微信小程序去广告)",
+      "url": "https://raw.githubusercontent.com/fmz200/wool_scripts/main/Loon/plugin/WeChatMiniAds.plugin",
+      "type": "loon_plugin",
+      "required": false
+    },
+    {
+      "name": "fmz200 blockHTTPDNS (拦截 HTTPDNS 防绕过)",
+      "url": "https://raw.githubusercontent.com/fmz200/wool_scripts/main/Surge/module/blockHTTPDNS.module",
+      "type": "sgmodule",
+      "required": false
+    },
+    {
+      "name": "ddgksf2013 AmapAds (高德地图去广告)",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/AmapAds.conf",
+      "type": "quanx_conf",
+      "required": false
+    },
+    {
+      "name": "ddgksf2013 SmzdmAds (什么值得买去广告)",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/SmzdmAds.conf",
+      "type": "quanx_conf",
+      "required": false
+    },
+    {
+      "name": "ddgksf2013 TieBaAds (百度贴吧去广告)",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/TieBaAds.conf",
+      "type": "quanx_conf",
+      "required": false
+    },
+    {
+      "name": "ddgksf2013 XiaoYuZhouAds (小宇宙去广告)",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/XiaoYuZhouAds.conf",
+      "type": "quanx_conf",
+      "required": false
+    },
+    {
+      "name": "ddgksf2013 Ximalaya (喜马拉雅去广告)",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/Ximalaya.conf",
+      "type": "quanx_conf",
+      "required": false
+    },
+    {
+      "name": "ddgksf2013 KeepAds (Keep 去广告)",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/KeepAds.conf",
+      "type": "quanx_conf",
+      "required": false
+    },
+    {
+      "name": "ddgksf2013 CainiaoAds (菜鸟去广告)",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/CainiaoAds.conf",
+      "type": "quanx_conf",
+      "required": false
+    },
+    {
+      "name": "ddgksf2013 GoofishAds (闲鱼去广告)",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/GoofishAds.conf",
+      "type": "quanx_conf",
+      "required": false
+    },
+    {
+      "name": "ddgksf2013 CaiYunAds (彩云天气去广告)",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/CaiYunAds.conf",
+      "type": "quanx_conf",
+      "required": false
+    },
+    {
+      "name": "ddgksf2013 NeteaseAds (网易云音乐去广告)",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/NeteaseAds.conf",
+      "type": "quanx_conf",
+      "required": false
+    },
+    {
+      "name": "ddgksf2013 MoJiWeatherAds (墨迹天气去广告)",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/MoJiWeatherAds.conf",
+      "type": "quanx_conf",
+      "required": false
+    },
+    {
+      "name": "ddgksf2013 CheLaiLeAds (车来了去广告)",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/CheLaiLeAds.conf",
+      "type": "quanx_conf",
+      "required": false
+    }
+  ]
+}
