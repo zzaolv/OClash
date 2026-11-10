@@ -24,6 +24,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   # PR 的检查和 main 上的发布分开排队, 互不阻塞
@@ -142,3 +143,13 @@ jobs:
           git commit -q -m "chore: update AdStop rules ($(date -u +'%Y-%m-%d %H:%M UTC'))"
           git push -q -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:${PUBLISH_BRANCH}"
           echo "订阅地址: https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${PUBLISH_BRANCH}/${OUTPUT_FILE}" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Clean up old workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        if: always() && github.event_name != 'pull_request'
+        continue-on-error: true
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          retain_days: 0
+          keep_minimum_runs: 3
