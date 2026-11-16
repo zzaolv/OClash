@@ -31856,3 +31856,8 @@ DOMAIN-SUFFIX,grafana.net
 DOMAIN-SUFFIX,questionablequesting.com
 DOMAIN-SUFFIX,spacebattles.com
 DOMAIN-SUFFIX,51papaya.com
+DOMAIN-SUFFIX,debot.ai
+DOMAIN-SUFFIX,remna.dev
+DOMAIN-SUFFIX,full:builds.dotnet.microsoft.com
+DOMAIN-SUFFIX,full:dotnetcli.trafficmanager.net
+DOMAIN-SUFFIX,full:sundry-star-net-geo.trafficmanager.net
