@@ -319,3 +319,4 @@ DOMAIN,production-copilot-host-westus.webpubsub.azure.com
 DOMAIN-SUFFIX,grokbot.com
 DOMAIN,daily-cloudcode-pa.sandbox.googleapis.com
 DOMAIN-SUFFIX,elevenlabsusercontent.com
+DOMAIN-SUFFIX,gemma.ai
