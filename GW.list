@@ -31908,3 +31908,9 @@ DOMAIN-SUFFIX,usj.co.jp
 DOMAIN-SUFFIX,hkt
 DOMAIN-SUFFIX,pccw
 DOMAIN-SUFFIX,gemma.ai
+DOMAIN,courses.myecnu.org
+DOMAIN-SUFFIX,cachix.org
+DOMAIN-SUFFIX,fastlydns.net
+DOMAIN-SUFFIX,vivox.com
+DOMAIN-SUFFIX,fastly-insights.com
+DOMAIN-SUFFIX,full:courses.myecnu.org
